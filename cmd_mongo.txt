@@ -1,0 +1,12 @@
+# 1. open new Windows cmd
+cd "C:\Program Files\MongoDB\Server\5.0\bin"
+mongod
+
+# 2. open new Windows cmd
+cd "C:\Program Files\MongoDB\Server\5.0\bin"
+mongo
+show dbs
+
+# Import. open new Windows cmd (Do only once)
+cd "C:\Program Files\MongoDB\Server\5.0\bin"
+mongoimport -d testdb -c restaurants C:\Users\pierr\Documents\institut_Agro\Big_Data\MongoDB\restaurants.json
