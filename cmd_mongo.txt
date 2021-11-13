@@ -8,5 +8,10 @@ mongo
 show dbs
 
 # Import. open new Windows cmd (Do only once)
+md data/db
 cd "C:\Program Files\MongoDB\Server\5.0\bin"
+<<<<<<< HEAD
 mongoimport -d twitterdb -c tweets C:\Users\pierr\Documents\institut_Agro\Big_Data\Projet\Twitter\data\ID.jsonl
+=======
+mongoimport -d testdb -c restaurants C:\Users\pierr\Documents\institut_Agro\Big_Data\Projet\MongoDB\restaurants.json
+>>>>>>> 2f1ba7c63b9783045124e4890bb29f9792fe7cd3
