@@ -9,4 +9,4 @@ show dbs
 
 # Import. open new Windows cmd (Do only once)
 cd "C:\Program Files\MongoDB\Server\5.0\bin"
-mongoimport -d testdb -c restaurants C:\Users\pierr\Documents\institut_Agro\Big_Data\MongoDB\restaurants.json
+mongoimport -d twitterdb -c tweets C:\Users\pierr\Documents\institut_Agro\Big_Data\Projet\Twitter\data\ID.jsonl
