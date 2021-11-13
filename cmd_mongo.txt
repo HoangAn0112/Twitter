@@ -13,3 +13,14 @@ cd "C:\Program Files\MongoDB\Server\5.0\bin"
 
 mongoimport -d twitterdb -c tweets C:\Users\pierr\Documents\institut_Agro\Big_Data\Projet\Twitter\data\ID.jsonl
 
+```An
+#Import JSONL, open new Windows cmd 
+cd "C:\Program Files\MongoDB\Tools\100\bin"     #to use mongoimport, also move ID_py.jsonl file to same directory
+mongoimport --db mydb --collection twitter --file ID_py.jsonl
+
+# Explore file structure
+cd "C:\Program Files\MongoDB\Server\5.0\bin"
+mongo
+use mydb
+show collections
+db.twitter.find().pretty()
