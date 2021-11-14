@@ -24,3 +24,25 @@ mongo
 use mydb
 show collections
 db.twitter.find().pretty()
+
+################# Running Spark in local model ######################
+
+## Step 1: download Spark (file xxx.tgz) https://spark.apache.org/downloads.html
+
+## Step 2: un-zip file xxx.tgz -> get xxx.tar 
+
+## Step 3: un-zip one more time xxx.tar -> get the forder of Spark's file (with folder bin, etc...)
+
+## Step 4: open CP
+cd C:\Spark\spark-3.2.0-bin-hadoop3.2\spark-3.2.0-bin-hadoop3.2\bin
+pyspark
+
+## Step 5: download winutils.exe (choose version depend on your Spark version)   "https://github.com/cdarlint/winutils" 
+
+## Step 6: move winutils.exe to C:\Spark\spark-3.2.0-bin-hadoop3.2\spark-3.2.0-bin-hadoop3.2\bin
+
+################## Jupyter #################################
+conda install jupyter (in Python)
+
+
+
