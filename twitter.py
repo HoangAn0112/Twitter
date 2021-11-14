@@ -103,22 +103,20 @@ sentiment = tw.aggregate([
 # for level in sentiment:
 #     print(level)
 
-print("==========\nBarplot about sentiment")
-
 df = pd.DataFrame(list(sentiment))
-print(df)
-df["_id"][df["_id"]==-1] = "don't believe in climate change"
-df["_id"][df["_id"]==0] = "neutre opinion"
-df["_id"][df["_id"]==1] = "believe in climate change"
-df["_id"][df["_id"]==2] = "report news about climate change"
+# print(df)
+df["_id"][df["_id"]==-1] = "Ne croit pas au réchauffement climatique"
+df["_id"][df["_id"]==0] = "Sans opinion"
+df["_id"][df["_id"]==1] = "Croit au réchauffement climatique"
+df["_id"][df["_id"]==2] = "Relaie des faits d'acutalité à propos du réchauffement climatique"
 
 # # add percentage column
 # df["percent"] = round(df["count"]/sum(df["count"]), 4)*100
 
 ax = df.plot.barh(y = 'count', x = '_id', legend = False, color = "#1DA1F3")
-ax.set_xlabel("Number of tweets")
+ax.set_xlabel("Nombre de tweets")
 ax.set_ylabel("")
-ax.figure.savefig('barplot_sentiment.png',
+ax.figure.savefig('figures/barplot_sentiment.png',
                   dpi = 200, bbox_inches = "tight")
 
 
@@ -142,7 +140,7 @@ hashtag_list = []
 top_dict = {-1: 0, 0: 0, 1: 0, 2: 0}
 for doc in top_hashtags:
     # pp.pprint(doc)
-    if top_dict[doc["_id"]["sentiment"]] < 5:
+    if top_dict[doc["_id"]["sentiment"]] < 10:
         hashtag_list.append({"Frequency": doc["Nb#"],
                             "Hashtag": doc["_id"]["hashtag"],
                             "Sentiment": doc["_id"]["sentiment"]})   
@@ -151,32 +149,45 @@ for doc in top_hashtags:
 
 for elem in hashtag_list:
     if elem["Sentiment"] == -1:
-        elem["Opinion"] = "don't believe in climate change"
+        elem["Opinion"] = "Ne croit pas au réchauffement climatique"
     elif elem["Sentiment"] == 0:
-        elem["Opinion"] = "neutre opinion"
+        elem["Opinion"] = "Sans opinion"
     elif elem["Sentiment"] == 1:
-        elem["Opinion"] = "believe in climate change"
+        elem["Opinion"] = "Croit au réchauffement climatique"
     else:
-        elem["Opinion"] = "report news about climate change"
+        elem["Opinion"] = "Relaie des faits d'acutalité à propos du réchauffement climatique"
   
 df = pd.DataFrame(hashtag_list)
-print(df)
+# print(df)
 
-def 
-
-for key in top_dict.keys():
-    words = df["Hashtag"].values
-    cloud = WordCloud(width=800, height=400, background_color="white", max_words=50, min_font_size=10).generate(str(words))
+def plotWordCloud(dataframe):
+    words = list(dataframe["Hashtag"])
+    freq = list(dataframe["Frequency"])
+    words_dict = dict(zip(words, freq))
+    title = dataframe["Opinion"].values[0]
+    cloud = WordCloud(width=800, height=400,
+                      background_color="white",
+                      max_words=50, min_font_size=10).generate_from_frequencies(words_dict)
     plt.imshow(cloud)
     plt.axis("off")
-    plt.title(key)
+    plt.title(title)
     plt.tight_layout(pad=0)
+    plt.savefig('figures/wordcloud'+str(dataframe["Sentiment"].values[0])+'.png')
     plt.show()
 
-
-
+for s in range(-1, 3):
+    plotWordCloud(df[df["Sentiment"]==s])
 
 ###########################
 print("==========")
-print(" TASK 4: who tweets the most")
+print("TASK 4: who tweets the most")
+
+
+
+
+print("====================")
+print("Map/Reduce avec Spark")
+print("====================")
+
+
 
