@@ -64,6 +64,9 @@ for i in range(0,3):
     print("Tweet", i+1 ,"content = {}\n".format(re[i]["full_text"]))
         
 #####################################################
+
+print("==========")
+print(" TASK 1: add new field 'sentiment' to every document")
 ## TASK 1: add new field "sentiment" to every document in collection(twitter),
 ## with condition match ID in twitter_sentiment_data.csv
 
@@ -171,4 +174,9 @@ for key in top_dict.keys():
     plt.show()
 
 
+
+
+###########################
+print("==========")
+print(" TASK 4: who tweets the most")
 
